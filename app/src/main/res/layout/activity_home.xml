@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#800000"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:text="Dinner Planner"/>
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <TextView
+            android:id="@+id/txtAppDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_desc"
+            android:layout_centerInParent="true"/>
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:text="Start"
+            android:textColor="#ffffff"
+            android:textSize="23sp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:background="#800000"/>
+    </RelativeLayout>
+</LinearLayout>
