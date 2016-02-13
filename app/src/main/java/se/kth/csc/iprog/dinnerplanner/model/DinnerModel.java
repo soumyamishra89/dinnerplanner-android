@@ -1,9 +1,13 @@
 package se.kth.csc.iprog.dinnerplanner.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
-public class DinnerModel {
+public class DinnerModel implements IDinnerModel{
 	
 
 	Set<Dish> dishes = new HashSet<Dish>();
@@ -13,6 +17,10 @@ public class DinnerModel {
 	 * When you do this you will have all the needed fields and methods
 	 * for the dinner planner (number of guests, selected dishes, etc.). 
 	 */
+
+	private int numberOfGuests=0;
+
+	private Map<Dish, Set<Ingredient>> dishToIngredientsMap=new HashMap<Dish, Set<Ingredient>>();
 	
 	
 	/**
@@ -33,6 +41,7 @@ public class DinnerModel {
 		dish1.addIngredient(dish1ing4);
 		dish1.addIngredient(dish1ing5);
 		dishes.add(dish1);
+		dishToIngredientsMap.put(dish1, dish1.getIngredients());
 		
 		Dish dish2 = new Dish("Meat balls",Dish.MAIN,"meatballs.jpg","Preheat an oven to 400 degrees F (200 degrees C). Place the beef into a mixing bowl, and season with salt, onion, garlic salt, Italian seasoning, oregano, red pepper flakes, hot pepper sauce, and Worcestershire sauce; mix well. Add the milk, Parmesan cheese, and bread crumbs. Mix until evenly blended, then form into 1 1/2-inch meatballs, and place onto a baking sheet. Bake in the preheated oven until no longer pink in the center, 20 to 25 minutes.");
 		Ingredient dish2ing1 = new Ingredient("extra lean ground beef",115,"g",20);
@@ -58,6 +67,7 @@ public class DinnerModel {
 		dish2.addIngredient(dish2ing10);
 		dish2.addIngredient(dish2ing11);
 		dishes.add(dish2);
+		dishToIngredientsMap.put(dish2, dish2.getIngredients());
 		
 	}
 	
@@ -94,7 +104,69 @@ public class DinnerModel {
 		}
 		return result;
 	}
-	
-	
+
+
+	@Override
+	public int getNumberOfGuests() {
+		return numberOfGuests;
+	}
+
+	@Override
+	public void setNumberOfGuests(int numberOfGuests) {
+		this.numberOfGuests=numberOfGuests;
+	}
+
+	@Override
+	public Dish getSelectedDish(int type) {
+		Dish selectedDish=null;
+		for(Dish d : dishes){
+			if(d.getType() == type){
+				selectedDish=d;
+			}
+		}
+
+		return selectedDish;
+	}
+
+	@Override
+	public Set<Dish> getFullMenu() {
+		return dishes;
+	}
+
+	@Override
+	public Set<Ingredient> getAllIngredients() {
+		Set<Ingredient> allIngredients=new HashSet<Ingredient>();
+		for(Set<Ingredient> ingredients:dishToIngredientsMap.values()){
+			allIngredients.addAll(ingredients);
+		}
+		return new HashSet<Ingredient>(allIngredients);
+	}
+
+	@Override
+	public float getTotalMenuPrice() {
+		return calculateTotalPrice();
+	}
+
+	@Override
+	public void addDishToMenu(Dish dish) {
+		dishes.add(dish);
+		dishToIngredientsMap.put(dish, dish.getIngredients());
+	}
+
+	@Override
+	public void removeDishFromMenu(Dish dish) {
+		dishToIngredientsMap.remove(dish);
+		dishes.remove(dish);
+	}
+
+	private float calculateTotalPrice() {
+		float totalPrice=0;
+		for(Set<Ingredient> ingredients:dishToIngredientsMap.values()) {
+			for (Ingredient ing : ingredients) {
+				totalPrice += ing.getPrice();
+			}
+		}
+		return totalPrice*numberOfGuests;
+	}
 
 }
