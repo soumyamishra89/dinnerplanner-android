@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/view_dialog_activity_item_price"
+
+    android:background="#55000000"
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +21,7 @@
             android:orientation="vertical"
             android:background="@drawable/rect_border_magenta">
             <TextView
-                android:id="@+id/txtItemName"
+                android:id="@+id/txtDishName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -53,19 +56,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textSize="25sp"
+                        android:textSize="23sp"
                         android:text="Cost: 80 Kr"/>
                     <TextView
                         android:id="@+id/txtDishCost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="23sp"
+                        android:textSize="20sp"
                         android:text="(20 Kr / Person)"/>
                 </LinearLayout>
             </LinearLayout>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
+                android:id="@+id/btnChoose"
                 android:layout_marginTop="35dp"
                 android:layout_marginBottom="30dp"
                 android:paddingLeft="10dp"
@@ -79,13 +83,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
+            android:background="#00ffffff"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true">
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/cross_circle_black"
+                android:background="@drawable/white_cross_in_black_circle"
 
                 />
         </LinearLayout>

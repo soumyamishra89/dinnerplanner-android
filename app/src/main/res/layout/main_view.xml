@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/view_activity_main">
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -43,6 +44,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/txtNumberofGuests"
                     android:layout_marginLeft="10dp"
                     android:textSize="20sp"
                     android:textColor="#000000"
@@ -122,16 +124,18 @@
                     android:layout_width="100dp"
                     android:layout_height="110dp"
                     android:layout_marginRight="5dp"
-                    android:background="#ffffff"
+                    android:background="#00ffffff"
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
+                        android:id="@+id/imgStarterItem_1"
                         android:background="@drawable/mushroomtart"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
+                        android:id="@+id/txtStarterItem_1"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:text="Mushroom Tart"
@@ -142,15 +146,17 @@
                     android:layout_height="110dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:background="#ffffff"
+                    android:background="#00ffffff"
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
+                        android:id="@+id/imgStarterItem_2"
                         android:background="@drawable/crostini"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
+                        android:id="@+id/txtStarterItem_2"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:text="Crostini"
@@ -160,16 +166,18 @@
                     android:layout_width="100dp"
                     android:layout_height="110dp"
                     android:layout_marginLeft="5dp"
-                    android:background="#ffffff"
+                    android:background="#00ffffff"
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
+                        android:id="@+id/imgStarterItem_3"
                         android:background="@drawable/springrolls"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
+                        android:id="@+id/txtStarterItem_3"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:text="Spring rolls"
@@ -192,16 +200,18 @@
                     android:layout_width="100dp"
                     android:layout_height="110dp"
                     android:layout_marginRight="5dp"
-                    android:background="#ffffff"
+                    android:background="#00ffffff"
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
+                        android:id="@+id/imgMainCourseItem_1"
                         android:background="@drawable/chicken"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
+                        android:id="@+id/txtMainCourseItem_1"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:text="Chicken"
@@ -212,15 +222,17 @@
                     android:layout_height="110dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:background="#ffffff"
+                    android:background="#00ffffff"
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
+                        android:id="@+id/imgMainCourseItem_2"
                         android:background="@drawable/meatballs"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
+                        android:id="@+id/txtMainCourseItem_2"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:text="Meat"
@@ -231,16 +243,18 @@
                     android:layout_height="110dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:background="#ffffff"
+                    android:background="#00ffffff"
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
+                        android:id="@+id/imgMainCourseItem_3"
                         android:background="@drawable/shrimp"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
+                        android:id="@+id/txtMainCourseItem_3"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:text="Shrimp plate"
@@ -250,16 +264,18 @@
                     android:layout_width="100dp"
                     android:layout_height="110dp"
                     android:layout_marginLeft="5dp"
-                    android:background="#ffffff"
+                    android:background="#00ffffff"
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
+                        android:id="@+id/imgMainCourseItem_4"
                         android:background="@drawable/sourdough"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
+                        android:id="@+id/txtMainCourseItem_4"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:text="Sourdough"
@@ -282,16 +298,18 @@
                     android:layout_width="100dp"
                     android:layout_height="110dp"
                     android:layout_marginRight="5dp"
-                    android:background="#ffffff"
+                    android:background="#00ffffff"
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
+                        android:id="@+id/imgDessertItem_1"
                         android:background="@drawable/toast"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
+                        android:id="@+id/txtDessertItem_1"
                         android:textStyle="bold"
                         android:layout_gravity="center"
                         android:text="Toast"
@@ -302,15 +320,17 @@
                     android:layout_height="110dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:background="#ffffff"
+                    android:background="#00ffffff"
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
+                        android:id="@+id/imgDessertItem_2"
                         android:background="@drawable/icecream"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
+                        android:id="@+id/txtDessertItem_2"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:text="Icecream"
@@ -323,6 +343,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:id="@+id/btnCreate"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:background="#800000"
