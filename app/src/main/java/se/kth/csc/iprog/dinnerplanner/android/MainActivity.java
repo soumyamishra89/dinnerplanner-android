@@ -28,13 +28,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.main_view);
         DinnerModel dinnerModel=((DinnerPlannerApplication) this.getApplication()).getDinnerModel();
         IMenuModel menuModel = ((DinnerPlannerApplication) this.getApplication()).getMenuModel();
-        menuModel.setDessertText(getString(R.string.dessert_text));
-        menuModel.setMainText(getString(R.string.main_text));
-        menuModel.setStarterText(getString(R.string.starter_text));
 
-        dinnerModel.setNumberOfGuests(4);
-        dinnerModel.addDishToMenu(menuModel.getAllMenuItems().get(1));
-        dinnerModel.addDishToMenu(menuModel.getAllMenuItems().get(3));
         // Creating the view class instance
         MainView mainView = new MainView(findViewById(R.id.view_activity_main), menuModel, dinnerModel);
 
