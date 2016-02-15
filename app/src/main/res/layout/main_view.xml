@@ -113,7 +113,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#000000"
-                android:text="Starter"
+                android:id="@+id/starter"
                 />
             <LinearLayout
                 android:id="@+id/llStarter"
@@ -130,7 +130,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:id="@+id/imgStarterItem_1"
-                        android:background="@drawable/mushroomtart"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -138,7 +137,6 @@
                         android:id="@+id/txtStarterItem_1"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:text="Mushroom Tart"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -152,14 +150,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:id="@+id/imgStarterItem_2"
-                        android:background="@drawable/crostini"/>
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:id="@+id/txtStarterItem_2"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:text="Crostini"
+
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -172,7 +170,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:id="@+id/imgStarterItem_3"
-                        android:background="@drawable/springrolls"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -180,7 +177,6 @@
                         android:id="@+id/txtStarterItem_3"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:text="Spring rolls"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -190,7 +186,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#000000"
-                android:text="Main Course"/>
+                android:id="@+id/maincourse"/>
             <LinearLayout
                 android:id="@+id/llMainCourse"
                 android:layout_width="match_parent"
@@ -206,7 +202,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:id="@+id/imgMainCourseItem_1"
-                        android:background="@drawable/chicken"
+
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -214,7 +210,6 @@
                         android:id="@+id/txtMainCourseItem_1"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:text="Chicken"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -227,15 +222,13 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        android:id="@+id/imgMainCourseItem_2"
-                        android:background="@drawable/meatballs"/>
+                        android:id="@+id/imgMainCourseItem_2"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:id="@+id/txtMainCourseItem_2"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:text="Meat"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -249,7 +242,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:id="@+id/imgMainCourseItem_3"
-                        android:background="@drawable/shrimp"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -257,7 +249,6 @@
                         android:id="@+id/txtMainCourseItem_3"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:text="Shrimp plate"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -270,7 +261,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:id="@+id/imgMainCourseItem_4"
-                        android:background="@drawable/sourdough"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -278,7 +268,6 @@
                         android:id="@+id/txtMainCourseItem_4"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:text="Sourdough"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -288,7 +277,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#000000"
-                android:text="Dessert"/>
+                android:id="@+id/dessert"/>
             <LinearLayout
                 android:id="@+id/llDessert"
                 android:layout_width="match_parent"
@@ -304,7 +293,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:id="@+id/imgDessertItem_1"
-                        android:background="@drawable/toast"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -312,7 +300,6 @@
                         android:id="@+id/txtDessertItem_1"
                         android:textStyle="bold"
                         android:layout_gravity="center"
-                        android:text="Toast"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -325,15 +312,13 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        android:id="@+id/imgDessertItem_2"
-                        android:background="@drawable/icecream"/>
+                        android:id="@+id/imgDessertItem_2"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:id="@+id/txtDessertItem_2"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:text="Icecream"
                         />
                 </LinearLayout>
 

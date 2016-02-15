@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 
 import se.kth.csc.iprog.dinnerplanner.android.view.HomeView;
+import se.kth.csc.iprog.dinnerplanner.model.IHomeModel;
 
 /**
  * Created by Adnan Sakel on 2/13/2016.
@@ -22,11 +23,14 @@ public class HomeActivity extends Activity implements  View.OnClickListener{
         // it must come before any call to findViewById method
         setContentView(R.layout.activity_home);
 
-
+        IHomeModel homeModel=((DinnerPlannerApplication) this.getApplication()).getHomeModel();
+        homeModel.setStartText("Start");
+        homeModel.setHomeViewText(getString(R.string.app_desc));
         // Creating the view class instance
-        HomeView mainView = new HomeView(findViewById(R.id.view_activity_home));
+        HomeView mainView = new HomeView(findViewById(R.id.view_activity_home), homeModel);
 
         findViewById(R.id.header).setOnClickListener(this);
+        findViewById(R.id.btnStart).setOnClickListener(this);
     }
 
     @Override

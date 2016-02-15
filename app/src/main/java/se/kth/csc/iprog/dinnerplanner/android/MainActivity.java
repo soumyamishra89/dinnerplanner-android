@@ -11,6 +11,8 @@ import android.view.Window;
 import se.kth.csc.iprog.dinnerplanner.android.view.ExampleView;
 import se.kth.csc.iprog.dinnerplanner.android.view.MainView;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
+import se.kth.csc.iprog.dinnerplanner.model.IDinnerModel;
+import se.kth.csc.iprog.dinnerplanner.model.IMenuModel;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -24,10 +26,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         // it must come before any call to findViewById method
         //setContentView(R.layout.activity_main);
         setContentView(R.layout.main_view);
-        //DinnerModel model = ((DinnerPlannerApplication) this.getApplication()).getModel();
+        DinnerModel dinnerModel=((DinnerPlannerApplication) this.getApplication()).getDinnerModel();
+        IMenuModel menuModel = ((DinnerPlannerApplication) this.getApplication()).getMenuModel();
+        menuModel.setDessertText(getString(R.string.dessert_text));
+        menuModel.setMainText(getString(R.string.main_text));
+        menuModel.setStarterText(getString(R.string.starter_text));
 
+        dinnerModel.setNumberOfGuests(4);
+        dinnerModel.addDishToMenu(menuModel.getAllMenuItems().get(1));
+        dinnerModel.addDishToMenu(menuModel.getAllMenuItems().get(3));
         // Creating the view class instance
-        MainView mainView = new MainView(findViewById(R.id.view_activity_main));
+        MainView mainView = new MainView(findViewById(R.id.view_activity_main), menuModel, dinnerModel);
 
         findViewById(R.id.header).setOnClickListener(this);
         findViewById(R.id.btnCreate).setOnClickListener(this);

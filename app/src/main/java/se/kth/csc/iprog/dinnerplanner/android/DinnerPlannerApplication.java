@@ -3,18 +3,41 @@ package se.kth.csc.iprog.dinnerplanner.android;
 import android.app.Application;
 
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
+import se.kth.csc.iprog.dinnerplanner.model.HomeModel;
+import se.kth.csc.iprog.dinnerplanner.model.IDinnerModel;
+import se.kth.csc.iprog.dinnerplanner.model.IHomeModel;
+import se.kth.csc.iprog.dinnerplanner.model.IMenuModel;
+import se.kth.csc.iprog.dinnerplanner.model.MenuModel;
 
 public class DinnerPlannerApplication extends Application {
 	
-	private DinnerModel model = new DinnerModel();
+	private DinnerModel dinnerModel = new DinnerModel();
 
-	public DinnerModel getModel() {
-		return model;
+	private IHomeModel homeModel = new HomeModel();
+
+	private IMenuModel menuModel = new MenuModel();
+
+	public DinnerModel getDinnerModel(){
+		return dinnerModel;
 	}
 
-	public void setModel(DinnerModel model) {
-		this.model = model;
+	public void setDinnerModel(DinnerModel dinnerModel){
+		this.dinnerModel = dinnerModel;
 	}
 
+	public IHomeModel getHomeModel() {
+		return homeModel;
+	}
 
+	public void setHomeModel(IHomeModel homeModel) {
+		this.homeModel = homeModel;
+	}
+
+	public IMenuModel getMenuModel(){
+		return menuModel;
+	}
+
+	public void setMenuModel(IMenuModel menuModel){
+		this.menuModel = menuModel;
+	}
 }

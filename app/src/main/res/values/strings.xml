@@ -6,5 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="app_desc">Welcome to Dinner Planner !\n\nHere you will be able to easily plan\nyour dinner.\n\nOn the next page start by\nselecting number of participants.\nThen select your courses.\n\nWatch Magic Happen!</string>
     <string name="ins_crostini">Turn on the oven at 150C.\nCarve bread\nPut tomato and cheese on bread\nPlace in oven for 10 min.</string>
-
+    <string name="starter_text">Starter</string>
+    <string name="main_text">Main</string>
+    <string name="dessert_text">Dessert</string>
 </resources>
