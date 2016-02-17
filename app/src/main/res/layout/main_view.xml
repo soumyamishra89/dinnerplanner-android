@@ -98,7 +98,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="15dp"
@@ -115,71 +115,24 @@
                 android:textColor="#000000"
                 android:id="@+id/starter"
                 />
-            <LinearLayout
-                android:id="@+id/llStarter"
-                android:layout_width="match_parent"
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:id="@+id/hsvStarter">
                 <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="110dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#00ffffff"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:id="@+id/imgStarterItem_1"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:id="@+id/txtStarterItem_1"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="110dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#00ffffff"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:id="@+id/imgStarterItem_2"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:id="@+id/txtStarterItem_2"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
+                    android:id="@+id/llStarter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                        />
+                    <include layout="@layout/menu_item_view" />
+                    <include layout="@layout/menu_item_view"/>
+                    <include layout="@layout/menu_item_view"/>
+                    <include layout="@layout/menu_item_view"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="110dp"
-                    android:layout_marginLeft="5dp"
-                    android:background="#00ffffff"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:id="@+id/imgStarterItem_3"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:id="@+id/txtStarterItem_3"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        />
-                </LinearLayout>
-            </LinearLayout>
+            </HorizontalScrollView>
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -187,90 +140,24 @@
                 android:textStyle="bold"
                 android:textColor="#000000"
                 android:id="@+id/maincourse"/>
-            <LinearLayout
-                android:id="@+id/llMainCourse"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="110dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#00ffffff"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:id="@+id/imgMainCourseItem_1"
 
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:id="@+id/txtMainCourseItem_1"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        />
-                </LinearLayout>
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hsvMainCourse">
                 <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="110dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#00ffffff"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:id="@+id/imgMainCourseItem_2"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:id="@+id/txtMainCourseItem_2"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        />
+                    android:id="@+id/llMainCourse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/menu_item_view" />
+                    <include layout="@layout/menu_item_view"/>
+                    <include layout="@layout/menu_item_view"/>
+                    <include layout="@layout/menu_item_view"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="110dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#00ffffff"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:id="@+id/imgMainCourseItem_3"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:id="@+id/txtMainCourseItem_3"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="110dp"
-                    android:layout_marginLeft="5dp"
-                    android:background="#00ffffff"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:id="@+id/imgMainCourseItem_4"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:id="@+id/txtMainCourseItem_4"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        />
-                </LinearLayout>
-            </LinearLayout>
+            </HorizontalScrollView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -278,64 +165,39 @@
                 android:textStyle="bold"
                 android:textColor="#000000"
                 android:id="@+id/dessert"/>
-            <LinearLayout
-                android:id="@+id/llDessert"
-                android:layout_width="match_parent"
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:id="@+id/hsvDessert">
                 <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="110dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#00ffffff"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:id="@+id/imgDessertItem_1"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:id="@+id/txtDessertItem_1"
-                        android:textStyle="bold"
-                        android:layout_gravity="center"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="110dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#00ffffff"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:id="@+id/imgDessertItem_2"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:id="@+id/txtDessertItem_2"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        />
-                </LinearLayout>
+                    android:id="@+id/llDessert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                        <include layout="@layout/menu_item_view" />
+
+
+                    <include layout="@layout/menu_item_view"/>
+                    <include layout="@layout/menu_item_view"/>
+                    <include layout="@layout/menu_item_view"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:id="@+id/btnCreate"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="#800000"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Create"/>
         </LinearLayout>
     </ScrollView>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/btnCreate"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:background="#800000"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
-        android:text="Create"/>
+
 </RelativeLayout>
