@@ -1,120 +1,183 @@
 package se.kth.csc.iprog.dinnerplanner.android.view;
 
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
+
+import se.kth.csc.iprog.dinnerplanner.android.ItemPriceDialogActivity;
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
-import se.kth.csc.iprog.dinnerplanner.model.IMenuModel;
-
-import static android.graphics.drawable.Drawable.*;
+import se.kth.csc.iprog.dinnerplanner.model.Dish;
 
 /**
  * Created by Adnan Sakel on 2/13/2016.
  */
-public class MainView {
+public class MainView implements Observer{
+
+    Map<String, View> dishNameToViewMap = new HashMap<>();
+
     View view;
+
     TextView txtTotalCost;
     //TextView txtSearchMenu;
-    TextView txtNumberofGuests;
+    EditText txtNumberOfGuests;
 
-    ImageView imgStarterItem_1;
-    ImageView imgStarterItem_2;
-    ImageView imgStarterItem_3;
-    ImageView imgDessertItem_1;
-    ImageView imgDessertItem_2;
-    ImageView imgMainCourseItem_1;
-    ImageView imgMainCourseItem_2;
-    ImageView imgMainCourseItem_3;
-    ImageView imgMainCourseItem_4;
+    TextChangeListener textChangeListener = new TextChangeListener();
 
-    TextView txtStarterItem_1;
-    TextView txtStarterItem_2;
-    TextView txtStarterItem_3;
-    TextView txtMainCourseItem_1;
-    TextView txtMainCourseItem_2;
-    TextView txtMainCourseItem_3;
-    TextView txtMainCourseItem_4;
-    TextView txtDessertItem_1;
-    TextView txtDessertItem_2;
+    DinnerModel dinnerModel;
 
-    TextView starter;
-    TextView main;
-    TextView dessert;
+    LinearLayout starterLayout;
+    LinearLayout mainLayout;
+    LinearLayout dessertLayout;
+
+    GradientDrawable borderSelected;
+
+    LinearLayout.LayoutParams layoutParams;
+
+    LayoutInflater layoutInflater;
 
     Button btnCreate;
 
-    public MainView(View view, IMenuModel menuModel, DinnerModel dinnerModel){
+    public MainView(View view, DinnerModel dinnerModel){
 
-        int itemPos=0;
+        dinnerModel.addObserver(this);
+        this.dinnerModel = dinnerModel;
         this.view = view;
+        layoutInflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        txtNumberofGuests = (TextView)view.findViewById(R.id.txtNumberofGuests);
+        txtNumberOfGuests = (EditText)view.findViewById(R.id.txtNumberofGuests);
+
         txtTotalCost = (TextView)view.findViewById(R.id.txtTotalCost);
-        txtStarterItem_1 = (TextView)view.findViewById(R.id.txtStarterItem_1);
-        txtStarterItem_1.setText(menuModel.getAllMenuItems().get(itemPos).getName());
-        imgStarterItem_1 = (ImageView)view.findViewById(R.id.imgStarterItem_1);
-        imgStarterItem_1.setBackgroundResource(menuModel.getAllMenuItems( ).get(itemPos).getImage( ));
+        starterLayout = (LinearLayout) view.findViewById(R.id.llStarter);
+        mainLayout = (LinearLayout) view.findViewById(R.id.llMainCourse);
+        dessertLayout = (LinearLayout) view.findViewById(R.id.llDessert);
 
-        txtStarterItem_2 = (TextView)view.findViewById(R.id.txtStarterItem_2);
-        txtStarterItem_2.setText(menuModel.getAllMenuItems( ).get(++itemPos).getName( ));
-        imgStarterItem_2 = (ImageView)view.findViewById(R.id.imgStarterItem_2);
-        imgStarterItem_2.setBackgroundResource(menuModel.getAllMenuItems( ).get(itemPos).getImage( ));
-
-        txtStarterItem_3 = (TextView)view.findViewById(R.id.txtStarterItem_3);
-        txtStarterItem_3.setText(menuModel.getAllMenuItems( ).get(++itemPos).getName( ));
-        imgStarterItem_3 = (ImageView)view.findViewById(R.id.imgStarterItem_3);
-        imgStarterItem_3.setBackgroundResource(menuModel.getAllMenuItems( ).get(itemPos).getImage( ));
-
-        txtMainCourseItem_1 = (TextView)view.findViewById(R.id.txtMainCourseItem_1);
-        txtMainCourseItem_1.setText(menuModel.getAllMenuItems( ).get(++itemPos).getName( ));
-        imgMainCourseItem_1 = (ImageView)view.findViewById(R.id.imgMainCourseItem_1);
-        imgMainCourseItem_1.setBackgroundResource(menuModel.getAllMenuItems( ).get(itemPos).getImage( ));
-
-        txtMainCourseItem_2 = (TextView)view.findViewById(R.id.txtMainCourseItem_2);
-        txtMainCourseItem_2.setText(menuModel.getAllMenuItems( ).get(++itemPos).getName( ));
-        imgMainCourseItem_2 = (ImageView)view.findViewById(R.id.imgMainCourseItem_2);
-        imgMainCourseItem_2.setBackgroundResource(menuModel.getAllMenuItems( ).get(itemPos).getImage( ));
-
-        txtMainCourseItem_3 = (TextView)view.findViewById(R.id.txtMainCourseItem_3);
-        txtMainCourseItem_3.setText(menuModel.getAllMenuItems( ).get(++itemPos).getName( ));
-        imgMainCourseItem_3 = (ImageView)view.findViewById(R.id.imgMainCourseItem_3);
-        imgMainCourseItem_3.setBackgroundResource(menuModel.getAllMenuItems( ).get(itemPos).getImage( ));
-
-        txtMainCourseItem_4 = (TextView)view.findViewById(R.id.txtMainCourseItem_4);
-        txtMainCourseItem_4.setText(menuModel.getAllMenuItems( ).get(++itemPos).getName( ));
-        imgMainCourseItem_4 = (ImageView)view.findViewById(R.id.imgMainCourseItem_4);
-        imgMainCourseItem_4.setBackgroundResource(menuModel.getAllMenuItems( ).get(itemPos).getImage( ));
-
-        txtDessertItem_1 = (TextView)view.findViewById(R.id.txtDessertItem_1);
-        txtDessertItem_1.setText(menuModel.getAllMenuItems( ).get(++itemPos).getName( ));
-        imgDessertItem_1 = (ImageView)view.findViewById(R.id.imgDessertItem_1);
-        imgDessertItem_1.setBackgroundResource(menuModel.getAllMenuItems( ).get(itemPos).getImage( ));
-
-        txtDessertItem_2 = (TextView)view.findViewById(R.id.txtDessertItem_2);
-        txtDessertItem_2.setText(menuModel.getAllMenuItems( ).get(++itemPos).getName( ));
-        imgDessertItem_2 = (ImageView)view.findViewById(R.id.imgDessertItem_2);
-        imgDessertItem_2.setBackgroundResource(menuModel.getAllMenuItems( ).get(itemPos).getImage( ));
-
-        starter = (TextView) view.findViewById(R.id.starter);
-        starter.setText(menuModel.getStarterText( ));
-
-        main = (TextView) view.findViewById(R.id.maincourse);
-        main.setText(menuModel.getMainText( ));
-
-        dessert = (TextView) view.findViewById(R.id.dessert);
-        dessert.setText(menuModel.getDessertText());
+        borderSelected = new GradientDrawable();
+        borderSelected.setColor(Color.parseColor("#800000"));
+        //borderSelected.setStroke(4, Color.parseColor("#800000"));
+        layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(5, 0, 5, 0);
 
         btnCreate = (Button)view.findViewById(R.id.btnCreate);
 
-        txtNumberofGuests.setText(Integer.toString(dinnerModel.getNumberOfGuests()));
-        txtTotalCost.setText("Total cost: "+ Float.toString(dinnerModel.getTotalMenuPrice()));
+        txtNumberOfGuests.setText(Integer.toString(dinnerModel.getNumberOfGuests()));
+        txtNumberOfGuests.addTextChangedListener(textChangeListener);
+        txtTotalCost.setText(Float.toString(dinnerModel.getTotalMenuPrice()) + " Kr");
 
-        //You can set others using model
+        addViewsOfDishes();
 
+    }
 
+    private void addViewsOfDishes(){
+        // Starter menu
+        for(Dish starterDish : dinnerModel.getDishesOfType(Dish.STARTER)){
+            View starterView = layoutInflater.inflate(R.layout.menu_item_view, null);
+            TextView dishView = (TextView) starterView.findViewById(R.id.txtDishItem);
+
+            dishView.setText(starterDish.getName());
+            ImageView dishImage = (ImageView) starterView.findViewById(R.id.imgDishItem);
+            dishImage.setBackgroundResource(starterDish.getImage());
+
+            if(dinnerModel.getDishes().contains(starterDish))
+                starterView.findViewById(R.id.llMenuItem).setBackgroundDrawable(borderSelected);
+            starterView.setOnClickListener(new DishOnClickListener());
+            dishNameToViewMap.put(starterDish.getName(), starterView);
+            starterLayout.addView(starterView, layoutParams);
+        }
+
+        // Main menu
+        for(Dish mainDish : dinnerModel.getDishesOfType(Dish.MAIN)){
+            View mainView = layoutInflater.inflate(R.layout.menu_item_view, null);
+            TextView dishView = (TextView) mainView.findViewById(R.id.txtDishItem);
+            dishView.setText(mainDish.getName());
+            ImageView dishImage = (ImageView) mainView.findViewById(R.id.imgDishItem);
+            dishImage.setBackgroundResource(mainDish.getImage());
+
+            if(dinnerModel.getDishes().contains(mainDish))
+                mainView.findViewById(R.id.llMenuItem).setBackgroundDrawable(borderSelected);
+            mainView.setOnClickListener(new DishOnClickListener());
+            dishNameToViewMap.put(mainDish.getName(), mainView);
+            mainLayout.addView(mainView, layoutParams);
+        }
+
+        // Dessert menu
+        for(Dish dessertDish : dinnerModel.getDishesOfType(Dish.DESERT)){
+            View dessertView = layoutInflater.inflate(R.layout.menu_item_view, null);
+            TextView dishView = (TextView) dessertView.findViewById(R.id.txtDishItem);
+            dishView.setText(dessertDish.getName());
+            ImageView dishImage = (ImageView) dessertView.findViewById(R.id.imgDishItem);
+            dishImage.setBackgroundResource(dessertDish.getImage());
+
+            if(dinnerModel.getDishes().contains(dessertDish))
+                dessertView.findViewById(R.id.llMenuItem).setBackgroundDrawable(borderSelected);
+            dessertView.setOnClickListener(new DishOnClickListener());
+            dishNameToViewMap.put(dessertDish.getName(), dessertView);
+            dessertLayout.addView(dessertView, layoutParams);
+        }
+    }
+
+    @Override
+    public void update(Observable observable, Object data){
+        if(data instanceof Integer){
+            txtNumberOfGuests.removeTextChangedListener(textChangeListener);
+            txtNumberOfGuests.setText(data.toString());
+            txtNumberOfGuests.addTextChangedListener(textChangeListener);
+
+        } else if(data instanceof Dish){
+            Dish dish = (Dish) data;
+            if(dishNameToViewMap.containsKey(dish.getName())){
+                dishNameToViewMap.get(dish.getName()).setBackgroundDrawable(borderSelected);
+            }
+        }
+        if(observable instanceof DinnerModel){
+            DinnerModel dinnerModel = (DinnerModel) observable;
+            txtTotalCost.setText(Float.toString(dinnerModel.getTotalMenuPrice()) + " Kr");
+        }
+    }
+
+    public class TextChangeListener implements TextWatcher{
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after){
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count){
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s){
+            dinnerModel.setNumberOfGuests(Integer.parseInt(s.toString()));
+        }
+    }
+
+    public class DishOnClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v){
+            String dishName = ((TextView)v.findViewById(R.id.txtDishItem)).getText().toString();
+            Intent itemPriceIntent = new Intent(view.getContext(), ItemPriceDialogActivity.class);
+            itemPriceIntent.putExtra(Dish.EXTRA_DISH, dinnerModel.getSelectedDish(dishName));
+            itemPriceIntent.putExtra(Intent.EXTRA_TEXT, dinnerModel.getNumberOfGuests());
+            view.getContext().startActivity(itemPriceIntent);
+        }
     }
 }

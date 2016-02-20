@@ -4,16 +4,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Iterator;
-
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
-import se.kth.csc.iprog.dinnerplanner.model.Dish;
 
 /**
  * Created by Adnan Sakel on 2/14/2016.
  */
-public class Instructions1View {
+public class InstructionsView {
 
     View view;
 
@@ -30,7 +27,7 @@ public class Instructions1View {
     ImageView imgInstructionDish_2;
     ImageView imgInstructionDish_3;
 
-    public Instructions1View(View view, DinnerModel dinnerModel){
+    public InstructionsView(View view, DinnerModel dinnerModel){
         this.view = view;
 
         txtTotalCost = (TextView)view.findViewById(R.id.txtTotalCost);
@@ -46,12 +43,7 @@ public class Instructions1View {
 
         txtTotalCost.setText(Float.toString(dinnerModel.getTotalMenuPrice()));
 
-        Dish dish = dinnerModel.getDishes().get(0);
-        txtDishName_1.setText(dish.getName());
-        txtCookingInstruction.setText(dish.getDescription());
-        dish = dinnerModel.getDishes().get(1);
-        txtDishName_2.setText(dish.getName());
-        txtDishName_3.setText("");
+
 
         imgInstructionDish_1.setBackgroundResource(R.drawable.crostini);
         imgInstructionDish_2.setBackgroundResource(R.drawable.chicken);

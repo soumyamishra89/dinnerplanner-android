@@ -1,16 +1,11 @@
 package se.kth.csc.iprog.dinnerplanner.android.view;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Iterator;
-
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
-import se.kth.csc.iprog.dinnerplanner.model.Dish;
-import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 
 /**
  * Created by Adnan Sakel on 2/14/2016.
@@ -71,42 +66,42 @@ public class IngredientsView {
         imgInstructionDish_3 = (ImageView)view.findViewById(R.id.imgInstructionDish_3);
 
 
-        txtTotalCost.setText(Float.toString(dinnerModel.getTotalMenuPrice( )));
+        txtTotalCost.setText(Float.toString(dinnerModel.getTotalMenuPrice()));
 
-        Dish dish = dinnerModel.getDishes().get(0);
-        txtDishName_1.setText(dish.getName( ));
-        imgInstructionDish_1.setBackgroundResource(dish.getImage( ));
-
-        dish=dinnerModel.getDishes().get(1);
-        txtDishName_2.setText(dish.getName( ));
-        imgInstructionDish_2.setBackgroundResource(dish.getImage( ));
-        txtDishName_3.setText("");
-
-        dish = dinnerModel.getDishes().get(0);
-        Iterator<Ingredient> ingIterator=dish.getIngredients().iterator();
-
-        Ingredient ing=ingIterator.next();
-        txtIngredient_1.setText(ing.getName());
-        txtIngredient_1_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests() + " " + ing.getUnit());
-
-        ing=ingIterator.next();
-        txtIngredient_2.setText(ing.getName( ));
-        txtIngredient_2_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests()+ " " + ing.getUnit());
-
-        ing=ingIterator.next();
-        txtIngredient_3.setText(ing.getName());
-        txtIngredient_3_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests()+ " " + ing.getUnit());
-
-        dish = dinnerModel.getDishes().get(1);
-        ingIterator=dish.getIngredients().iterator();
-        ing =ingIterator.next( );
-        txtIngredient_4.setText(ing.getName( ));
-        txtIngredient_4_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests()+ " " + ing.getUnit());
-
-        ing=ingIterator.next();
-        txtIngredient_5.setText(ing.getName());
-        txtIngredient_5_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests() + " " + ing.getUnit());
-
+//        Dish dish = dinnerModel.getDishes().get(0);
+//        txtDishName_1.setText(dish.getName( ));
+//        imgInstructionDish_1.setBackgroundResource(dish.getImage( ));
+//
+//        dish=dinnerModel.getDishes().get(1);
+//        txtDishName_2.setText(dish.getName( ));
+//        imgInstructionDish_2.setBackgroundResource(dish.getImage( ));
+//        txtDishName_3.setText("");
+//
+//        dish = dinnerModel.getDishes().get(0);
+//        Iterator<Ingredient> ingIterator=dish.getIngredients().iterator();
+//
+//        Ingredient ing=ingIterator.next();
+//        txtIngredient_1.setText(ing.getName());
+//        txtIngredient_1_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests() + " " + ing.getUnit());
+//
+//        ing=ingIterator.next();
+//        txtIngredient_2.setText(ing.getName());
+//        txtIngredient_2_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests()+ " " + ing.getUnit());
+//
+//        ing=ingIterator.next();
+//        txtIngredient_3.setText(ing.getName());
+//        txtIngredient_3_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests()+ " " + ing.getUnit());
+//
+//        dish = dinnerModel.getDishes().get(1);
+//        ingIterator=dish.getIngredients().iterator();
+//        ing =ingIterator.next( );
+//        txtIngredient_4.setText(ing.getName( ));
+//        txtIngredient_4_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests()+ " " + ing.getUnit());
+//
+//        ing=ingIterator.next();
+//        txtIngredient_5.setText(ing.getName());
+//        txtIngredient_5_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests() + " " + ing.getUnit());
+//
 
 
 

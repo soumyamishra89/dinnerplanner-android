@@ -1,10 +1,11 @@
 package se.kth.csc.iprog.dinnerplanner.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Dish {
-	
+public class Dish implements Serializable {
+	public static final String EXTRA_DISH = "DISH";
 	public static final int STARTER = 1;
 	public static final int MAIN = 2;
 	public static final int DESERT = 3;
@@ -72,4 +73,16 @@ public class Dish {
 		return false;
 	}
 
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof Dish){
+			return ((Dish) o).getName().equals(name);
+		}
+		return super.equals(o);
+	}
+
+	@Override
+	public int hashCode(){
+		return name.hashCode();
+	}
 }

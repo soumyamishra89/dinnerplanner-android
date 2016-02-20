@@ -1,6 +1,8 @@
 package se.kth.csc.iprog.dinnerplanner.model;
 
-public class Ingredient {
+import java.io.Serializable;
+
+public class Ingredient implements Serializable{
 	
 	String name;
 	double quantity;

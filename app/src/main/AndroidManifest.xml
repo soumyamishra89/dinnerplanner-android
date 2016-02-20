@@ -18,13 +18,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".IngredientsActivity">
+        <activity android:name=".IngredientsActivity"
+            android:parentActivityName=".MainActivity">
 
         </activity>
-        <activity android:name=".Instructions1Activity">
-
-        </activity>
-        <activity android:name=".Instructions2Activity">
+        <activity android:name=".InstructionsActivity">
 
         </activity>
         <activity

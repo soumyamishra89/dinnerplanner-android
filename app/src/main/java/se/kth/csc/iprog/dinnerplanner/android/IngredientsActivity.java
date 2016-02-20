@@ -32,6 +32,6 @@ public class IngredientsActivity extends Activity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(IngredientsActivity.this,Instructions1Activity.class));
+        startActivity(new Intent(IngredientsActivity.this, InstructionsActivity.class));
     }
 }

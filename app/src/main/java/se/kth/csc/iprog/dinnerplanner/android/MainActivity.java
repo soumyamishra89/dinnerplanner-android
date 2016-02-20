@@ -3,19 +3,16 @@ package se.kth.csc.iprog.dinnerplanner.android;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
-import se.kth.csc.iprog.dinnerplanner.android.view.ExampleView;
 import se.kth.csc.iprog.dinnerplanner.android.view.MainView;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
-import se.kth.csc.iprog.dinnerplanner.model.IDinnerModel;
-import se.kth.csc.iprog.dinnerplanner.model.IMenuModel;
 
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends Activity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,24 +23,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
         // it must come before any call to findViewById method
         //setContentView(R.layout.activity_main);
         setContentView(R.layout.main_view);
-        DinnerModel dinnerModel=((DinnerPlannerApplication) this.getApplication()).getDinnerModel();
-        IMenuModel menuModel = ((DinnerPlannerApplication) this.getApplication()).getMenuModel();
+        final DinnerModel dinnerModel = ((DinnerPlannerApplication) this.getApplication()).getDinnerModel();
 
         // Creating the view class instance
-        MainView mainView = new MainView(findViewById(R.id.view_activity_main), menuModel, dinnerModel);
+        MainView mainView = new MainView(findViewById(R.id.view_activity_main), dinnerModel);
 
-        findViewById(R.id.header).setOnClickListener(this);
-        findViewById(R.id.btnCreate).setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View view) {
-        if(view == findViewById(R.id.header)){
-            startActivity(new Intent(MainActivity.this,IngredientsActivity.class));
-        }
-
-        if(view == findViewById(R.id.btnCreate)){
-            startActivity(new Intent(MainActivity.this,ItemPriceDialogActivity.class));
-        }
+        //findViewById(R.id.header).setOnClickListener(this);
+        findViewById(R.id.btnCreate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                if(v.getId() == R.id.btnCreate) {
+                    if (!dinnerModel.getDishes().isEmpty()) {
+                        startActivity(new Intent(MainActivity.this, IngredientsActivity.class));
+                    } else {
+                        Toast warningToast = Toast.makeText(v.getContext(), "Select some dishes", Toast.LENGTH_LONG);
+                        warningToast.setGravity(Gravity.CENTER, 0, 0);
+                        warningToast.show();
+                    }
+                }
+            }
+        });
     }
 }

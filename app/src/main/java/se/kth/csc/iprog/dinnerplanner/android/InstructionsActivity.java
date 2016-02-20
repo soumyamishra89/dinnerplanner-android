@@ -1,18 +1,16 @@
 package se.kth.csc.iprog.dinnerplanner.android;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 
-import se.kth.csc.iprog.dinnerplanner.android.view.Instructions1View;
+import se.kth.csc.iprog.dinnerplanner.android.view.InstructionsView;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 
 /**
  * Created by Adnan Sakel on 2/14/2016.
  */
-public class Instructions1Activity extends Activity implements View.OnClickListener{
+public class InstructionsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +23,7 @@ public class Instructions1Activity extends Activity implements View.OnClickListe
 
         DinnerModel dinnerModel=((DinnerPlannerApplication)this.getApplication()).getDinnerModel();
         // Creating the view class instance
-        Instructions1View mainView = new Instructions1View(findViewById(R.id.view_activity_instructions), dinnerModel);
-        findViewById(R.id.header).setOnClickListener(this);
-    }
+        InstructionsView mainView = new InstructionsView(findViewById(R.id.view_activity_instructions), dinnerModel);
 
-    @Override
-    public void onClick(View v){
-        startActivity(new Intent(Instructions1Activity.this,Instructions2Activity.class));
     }
 }
