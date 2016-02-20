@@ -1,7 +1,5 @@
 package se.kth.csc.iprog.dinnerplanner.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -107,10 +105,10 @@ public class DinnerModel extends Observable implements IDinnerModel{
 	}
 
 	@Override
-	public Dish getSelectedDish(String name) {
+	public Dish getSelectedDish(int type) {
 		Dish selectedDish=null;
 		for(Dish d : fullMenu){
-			if(d.getName().equalsIgnoreCase(name)){
+			if(d.getType()==type){
 				selectedDish=d;
 			}
 		}
@@ -139,7 +137,6 @@ public class DinnerModel extends Observable implements IDinnerModel{
 	public void addDishToMenu(Dish dish){
 
 		dishes.add(dish);
-		Log.v("Soumya : ", "" + dishes.size());
 		setChanged();
 		notifyObservers(dish);
 

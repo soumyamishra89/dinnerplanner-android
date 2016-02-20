@@ -96,7 +96,7 @@ public class MainView implements Observer{
 
             if(dinnerModel.getDishes().contains(starterDish))
                 starterView.findViewById(R.id.llMenuItem).setBackgroundDrawable(borderSelected);
-            starterView.setOnClickListener(new DishOnClickListener());
+            starterView.setOnClickListener(new DishOnClickListener(starterDish));
             dishNameToViewMap.put(starterDish.getName(), starterView);
             starterLayout.addView(starterView, layoutParams);
         }
@@ -111,7 +111,7 @@ public class MainView implements Observer{
 
             if(dinnerModel.getDishes().contains(mainDish))
                 mainView.findViewById(R.id.llMenuItem).setBackgroundDrawable(borderSelected);
-            mainView.setOnClickListener(new DishOnClickListener());
+            mainView.setOnClickListener(new DishOnClickListener(mainDish));
             dishNameToViewMap.put(mainDish.getName(), mainView);
             mainLayout.addView(mainView, layoutParams);
         }
@@ -126,7 +126,7 @@ public class MainView implements Observer{
 
             if(dinnerModel.getDishes().contains(dessertDish))
                 dessertView.findViewById(R.id.llMenuItem).setBackgroundDrawable(borderSelected);
-            dessertView.setOnClickListener(new DishOnClickListener());
+            dessertView.setOnClickListener(new DishOnClickListener(dessertDish));
             dishNameToViewMap.put(dessertDish.getName(), dessertView);
             dessertLayout.addView(dessertView, layoutParams);
         }
@@ -171,11 +171,16 @@ public class MainView implements Observer{
 
     public class DishOnClickListener implements View.OnClickListener{
 
+        Dish selectedDish;
+
+        DishOnClickListener(Dish dish){
+            this.selectedDish=dish;
+        }
         @Override
         public void onClick(View v){
             String dishName = ((TextView)v.findViewById(R.id.txtDishItem)).getText().toString();
             Intent itemPriceIntent = new Intent(view.getContext(), ItemPriceDialogActivity.class);
-            itemPriceIntent.putExtra(Dish.EXTRA_DISH, dinnerModel.getSelectedDish(dishName));
+            itemPriceIntent.putExtra(Dish.EXTRA_DISH, selectedDish);
             itemPriceIntent.putExtra(Intent.EXTRA_TEXT, dinnerModel.getNumberOfGuests());
             view.getContext().startActivity(itemPriceIntent);
         }
