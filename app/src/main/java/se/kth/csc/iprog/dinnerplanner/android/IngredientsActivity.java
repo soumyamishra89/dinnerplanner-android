@@ -38,7 +38,6 @@ public class IngredientsActivity extends Activity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        //startActivity(new Intent(IngredientsActivity.this, InstructionsActivity.class));
         if(view == findViewById(R.id.llbackarrow)){
             this.finish();
         }

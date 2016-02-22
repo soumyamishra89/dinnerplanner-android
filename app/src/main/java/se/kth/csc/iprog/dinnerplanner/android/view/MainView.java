@@ -170,6 +170,7 @@ public class MainView implements Observer{
 
         @Override
         public void afterTextChanged(Editable s){
+            if(!s.toString().isEmpty())
             dinnerModel.setNumberOfGuests(Integer.parseInt(s.toString()));
         }
     }

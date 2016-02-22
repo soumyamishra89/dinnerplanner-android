@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Set;
 
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
@@ -54,10 +53,6 @@ public class IngredientsView implements Observer {
 
         txtTotalCost = (TextView)view.findViewById(R.id.txtTotalCost);
 
-
-
-
-
         txtNumberofPersons = (TextView)view.findViewById(R.id.txtNumberofPerson);
         txtIngredientsTitle = (TextView)view.findViewById(R.id.txtingredientsTitle);
 
@@ -67,47 +62,6 @@ public class IngredientsView implements Observer {
 
         llborderColor_ingredients = (LinearLayout)view.findViewById(R.id.llborderColor_ingredients);
 
-    //    txtTotalCost.setText(Float.toString(dinnerModel.getTotalMenuPrice()));
-
-     //   loadDynamicViews();
-
-//        Dish dish = dinnerModel.getDishes().get(0);
-//        txtDishName_1.setText(dish.getName( ));
-//        imgInstructionDish_1.setBackgroundResource(dish.getImage( ));
-//
-//        dish=dinnerModel.getDishes().get(1);
-//        txtDishName_2.setText(dish.getName( ));
-//        imgInstructionDish_2.setBackgroundResource(dish.getImage( ));
-//        txtDishName_3.setText("");
-//
-//        dish = dinnerModel.getDishes().get(0);
-//        Iterator<Ingredient> ingIterator=dish.getIngredients().iterator();
-//
-//        Ingredient ing=ingIterator.next();
-//        txtIngredient_1.setText(ing.getName());
-//        txtIngredient_1_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests() + " " + ing.getUnit());
-//
-//        ing=ingIterator.next();
-//        txtIngredient_2.setText(ing.getName());
-//        txtIngredient_2_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests()+ " " + ing.getUnit());
-//
-//        ing=ingIterator.next();
-//        txtIngredient_3.setText(ing.getName());
-//        txtIngredient_3_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests()+ " " + ing.getUnit());
-//
-//        dish = dinnerModel.getDishes().get(1);
-//        ingIterator=dish.getIngredients().iterator();
-//        ing =ingIterator.next( );
-//        txtIngredient_4.setText(ing.getName( ));
-//        txtIngredient_4_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests()+ " " + ing.getUnit());
-//
-//        ing=ingIterator.next();
-//        txtIngredient_5.setText(ing.getName());
-//        txtIngredient_5_amount.setText(ing.getQuantity() * dinnerModel.getNumberOfGuests() + " " + ing.getUnit());
-//
-
-
-
     }
 
     public void loadIngredients(){
@@ -116,27 +70,20 @@ public class IngredientsView implements Observer {
         llingerdientDetails.removeAllViews();
         for(int i = 0; i < llDishes.getChildCount();i++) {
 
-                ((LinearLayout) llDishes.getChildAt(i).findViewById(R.id.llborderColor)).setBackgroundColor(Color.parseColor("#00800000"));
+            ((LinearLayout) llDishes.getChildAt(i).findViewById(R.id.llborderColor)).setBackgroundColor(Color.parseColor("#00800000"));
 
         }
         //llborderColor_ingredients.setBackgroundColor(Color.parseColor("#800000"));
        for(Dish dish: dinnerModel.getDishes()){
-           /*View instructionsItemView = layoutInflater.inflate(R.layout.instruction_item_view,null);
-           instructionsItemView.setTag(i++);
-           ImageView imgInstructionDish = (ImageView)instructionsItemView.findViewById(R.id.imgInstructionDish);
-           TextView txtDishName = (TextView)instructionsItemView.findViewById(R.id.txtNameDish);
-           imgInstructionDish.setBackgroundResource(dish.getImage());
-           txtDishName.setText(dish.getName());
-           instructionsItemView.setOnClickListener(new InstructionOnClicListener());
-           llDishes.addView(instructionsItemView);*/
-
 
            for (Ingredient ing : dish.getIngredients()) {
 
                View ingtredientsItemView = layoutInflater.inflate(R.layout.ingredients_item_view,null);
                TextView txtingredientName = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientName);
                TextView txtingredientUnit = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientUnit);
+               TextView txtingredientqty = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientqty);
                txtingredientName.setText(ing.getName());
+               txtingredientqty.setText(Double.toString(ing.getQuantity() * dinnerModel.getNumberOfGuests()));
                txtingredientUnit.setText(ing.getUnit());
                llingerdientDetails.addView(ingtredientsItemView);
            }
@@ -162,7 +109,7 @@ public class IngredientsView implements Observer {
                 TextView txtDishName = (TextView)instructionsItemView.findViewById(R.id.txtNameDish);
                 imgInstructionDish.setBackgroundResource(dish.getImage());
                 txtDishName.setText(dish.getName());
-                instructionsItemView.setOnClickListener(new InstructionOnClicListener());
+                instructionsItemView.setOnClickListener(new InstructionOnClickListener());
                 llDishes.addView(instructionsItemView);
 
 
@@ -171,7 +118,9 @@ public class IngredientsView implements Observer {
                     View ingtredientsItemView = layoutInflater.inflate(R.layout.ingredients_item_view,null);
                     TextView txtingredientName = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientName);
                     TextView txtingredientUnit = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientUnit);
+                    TextView txtingredientqty = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientqty);
                     txtingredientName.setText(ing.getName());
+                    txtingredientqty.setText(Double.toString(ing.getQuantity()*odinnermodel.getNumberOfGuests()));
                     txtingredientUnit.setText(ing.getUnit());
                     llingerdientDetails.addView(ingtredientsItemView);
                 }
@@ -179,10 +128,9 @@ public class IngredientsView implements Observer {
 
         }
 
-
     }
 
-    public class InstructionOnClicListener implements View.OnClickListener{
+    public class InstructionOnClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View view) {
