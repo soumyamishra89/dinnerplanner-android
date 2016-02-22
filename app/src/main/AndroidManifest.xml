@@ -19,7 +19,7 @@
         </activity>
 
         <activity android:name=".IngredientsActivity"
-            android:parentActivityName=".MainActivity">
+            >
 
         </activity>
         <activity android:name=".InstructionsActivity">
