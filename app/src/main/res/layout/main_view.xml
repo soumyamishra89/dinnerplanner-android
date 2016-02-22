@@ -167,23 +167,24 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:id="@+id/btnCreate"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="#800000"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/text_create"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                />
+
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/btnCreate"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:background="#800000"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/text_create"
 
-        android:layout_marginBottom="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
