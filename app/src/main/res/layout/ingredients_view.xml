@@ -57,7 +57,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="#800000"
-
+            android:id="@+id/llborderColor_ingredients"
             android:gravity="center"
             >
             <ImageView
@@ -86,93 +86,75 @@
             android:layout_height="15dp"
             android:text="Instructions"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="left"
+            android:layout_marginLeft="90dp"
             android:textSize="15sp"
             />
-        <LinearLayout
+        <HorizontalScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
             <LinearLayout
-                android:layout_width="80dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lldishes"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="#00800000"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="7dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="#00800000"
 
-                    android:gravity="center"
-                    >
-                    <ImageView
-                        android:layout_width="73dp"
-                        android:layout_height="73dp"
-                        android:id="@+id/imgInstructionDish_1"
-                        android:background="@drawable/crostini"/>
+                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:layout_width="73dp"
+                            android:layout_height="73dp"
+                            android:id="@+id/imgInstructionDish_2"
+                            android:background="@drawable/chicken"/>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:id="@+id/txtNameDish_2"
+                        android:text="Chicken"
+                        android:textSize="15sp"
+                        android:gravity="center"/>
                 </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:id="@+id/txtNameDish_1"
-                    android:text="Crostini"
-                    android:textSize="15sp"
-                    android:gravity="center"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="80dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="7dp"
-                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="#00800000"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="7dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="#00800000"
 
-                    android:gravity="center"
-                    >
-                    <ImageView
-                        android:layout_width="73dp"
-                        android:layout_height="73dp"
-                        android:id="@+id/imgInstructionDish_2"
-                        android:background="@drawable/chicken"/>
+                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:layout_width="73dp"
+                            android:layout_height="73dp"
+                            android:id="@+id/imgInstructionDish_3"
+                            android:background="#800000"/>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:id="@+id/txtNameDish_3"
+                        android:text=""
+                        android:textSize="15sp"
+                        android:gravity="center"/>
                 </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:id="@+id/txtNameDish_2"
-                    android:text="Chicken"
-                    android:textSize="15sp"
-                    android:gravity="center"/>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="80dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="7dp"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="#00800000"
+        </HorizontalScrollView>
 
-                    android:gravity="center"
-                    >
-                    <ImageView
-                        android:layout_width="73dp"
-                        android:layout_height="73dp"
-                        android:id="@+id/imgInstructionDish_3"
-                        android:background="#800000"/>
-                </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:id="@+id/txtNameDish_3"
-                    android:text=""
-                    android:textSize="15sp"
-                    android:gravity="center"/>
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
 <View
     android:id="@+id/vhorizontalbar"
@@ -187,7 +169,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/llingredientdetails"
+        android:id="@+id/llingredientdetailsHeader"
         android:layout_below="@id/vhorizontalbar"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
@@ -195,95 +177,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/txtingredientsTitle"
             android:textSize="25sp"
             android:textStyle="bold"
             android:text="Ingredients"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtIngredient_1"
-                    android:layout_marginTop="10dp"
-                    android:text="Chicken"
-                    android:textSize="20sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtIngredient_2"
-                    android:layout_marginTop="5dp"
-                    android:text="Bread"
-                    android:textSize="20sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtIngredient_3"
-                    android:layout_marginTop="5dp"
-                    android:text="Tomato"
-                    android:textSize="20sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtIngredient_4"
-                    android:layout_marginTop="5dp"
-                    android:text="Salad"
-                    android:textSize="20sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtIngredient_5"
-                    android:layout_marginTop="5dp"
-                    android:text="Cheese"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtIngredient_1_amount"
-                    android:layout_marginTop="10dp"
-                    android:text="1200 gr"
-                    android:textSize="20sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtIngredient_2_amount"
-                    android:layout_marginTop="5dp"
-                    android:text="2 loafs"
-                    android:textSize="20sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtIngredient_3_amount"
-                    android:layout_marginTop="5dp"
-                    android:text="2 pcs"
-                    android:textSize="20sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtIngredient_4_amount"
-                    android:layout_marginTop="5dp"
-                    android:text="100 gr"
-                    android:textSize="20sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtIngredient_5_amount"
-                    android:layout_marginTop="5dp"
-                    android:text="650 gr"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-        </LinearLayout>
+
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
@@ -296,4 +194,20 @@
         android:textStyle="italic"
         android:textSize="25sp"
         android:text="4 pers"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llingredientdetailsHeader"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/llingredientdetails"
+            android:orientation="vertical"
+            >
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
