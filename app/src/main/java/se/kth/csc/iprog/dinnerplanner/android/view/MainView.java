@@ -95,7 +95,7 @@ public class MainView implements Observer{
             dishImage.setBackgroundResource(starterDish.getImage());
 
             if(dinnerModel.getDishes().contains(starterDish))
-                starterView.findViewById(R.id.llMenuItem).setBackgroundDrawable(borderSelected);
+                starterView.findViewById(R.id.llMenuItem).setBackgroundResource(R.drawable.rect_border_magenta);
             starterView.setOnClickListener(new DishOnClickListener());
             dishNameToViewMap.put(starterDish.getName(), starterView);
             starterLayout.addView(starterView, layoutParams);
@@ -110,7 +110,7 @@ public class MainView implements Observer{
             dishImage.setBackgroundResource(mainDish.getImage());
 
             if(dinnerModel.getDishes().contains(mainDish))
-                mainView.findViewById(R.id.llMenuItem).setBackgroundDrawable(borderSelected);
+                mainView.findViewById(R.id.llMenuItem).setBackgroundResource(R.drawable.rect_border_magenta);
             mainView.setOnClickListener(new DishOnClickListener());
             dishNameToViewMap.put(mainDish.getName(), mainView);
             mainLayout.addView(mainView, layoutParams);
@@ -125,7 +125,7 @@ public class MainView implements Observer{
             dishImage.setBackgroundResource(dessertDish.getImage());
 
             if(dinnerModel.getDishes().contains(dessertDish))
-                dessertView.findViewById(R.id.llMenuItem).setBackgroundDrawable(borderSelected);
+                dessertView.findViewById(R.id.llMenuItem).setBackgroundResource(R.drawable.rect_border_magenta);
             dessertView.setOnClickListener(new DishOnClickListener());
             dishNameToViewMap.put(dessertDish.getName(), dessertView);
             dessertLayout.addView(dessertView, layoutParams);
@@ -142,7 +142,7 @@ public class MainView implements Observer{
         } else if(data instanceof Dish){
             Dish dish = (Dish) data;
             if(dishNameToViewMap.containsKey(dish.getName())){
-                dishNameToViewMap.get(dish.getName()).setBackgroundDrawable(borderSelected);
+                dishNameToViewMap.get(dish.getName()).setBackgroundResource(R.drawable.rect_border_magenta);
             }
         }
         if(observable instanceof DinnerModel){
