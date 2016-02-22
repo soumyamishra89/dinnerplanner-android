@@ -1,72 +1,75 @@
 package se.kth.csc.iprog.dinnerplanner.android.view;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Set;
 
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
+import se.kth.csc.iprog.dinnerplanner.model.Dish;
+import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 
 /**
  * Created by Adnan Sakel on 2/14/2016.
  */
-public class IngredientsView {
+public class IngredientsView implements Observer {
     View view;
-
+    DinnerModel dinnerModel;
     TextView txtTotalCost;
-    TextView txtDishName_1;
-    TextView txtDishName_2;
-    TextView txtDishName_3;
 
-    TextView txtIngredient_1;
-    TextView txtIngredient_2;
-    TextView txtIngredient_3;
-    TextView txtIngredient_4;
-    TextView txtIngredient_5;
 
-    TextView txtIngredient_1_amount;
-    TextView txtIngredient_2_amount;
-    TextView txtIngredient_3_amount;
-    TextView txtIngredient_4_amount;
-    TextView txtIngredient_5_amount;
+    TextView txtIngredient;
+
+    TextView txtIngredient_amount;
+
 
     TextView txtNumberofPersons;
+    TextView txtIngredientsTitle;
+    LinearLayout llDishes;
+    LinearLayout llingerdientDetails;
+    LinearLayout llborderColor_ingredients;
 
-    ImageView imgInstructionDish_1;
-    ImageView imgInstructionDish_2;
-    ImageView imgInstructionDish_3;
+    LayoutInflater layoutInflater;
+    LinearLayout.LayoutParams layoutParams;
 
     public IngredientsView(View view, DinnerModel dinnerModel){
+
+        dinnerModel.addObserver(this);
         this.view = view;
+        this.dinnerModel = dinnerModel;
+
+        layoutInflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(5, 0, 5, 0);
 
         txtTotalCost = (TextView)view.findViewById(R.id.txtTotalCost);
 
-        txtTotalCost.setText(Float.toString(dinnerModel.getTotalMenuPrice()));
 
-        txtDishName_1 = (TextView)view.findViewById(R.id.txtNameDish_1);
-        txtDishName_2 = (TextView)view.findViewById(R.id.txtNameDish_2);
-        txtDishName_3 = (TextView)view.findViewById(R.id.txtNameDish_3);
 
-        txtIngredient_1 = (TextView)view.findViewById(R.id.txtIngredient_1);
-        txtIngredient_2 = (TextView)view.findViewById(R.id.txtIngredient_2);
-        txtIngredient_3 = (TextView)view.findViewById(R.id.txtIngredient_3);
-        txtIngredient_4 = (TextView)view.findViewById(R.id.txtIngredient_4);
-        txtIngredient_5 = (TextView)view.findViewById(R.id.txtIngredient_5);
 
-        txtIngredient_1_amount = (TextView)view.findViewById(R.id.txtIngredient_1_amount);
-        txtIngredient_2_amount = (TextView)view.findViewById(R.id.txtIngredient_2_amount);
-        txtIngredient_3_amount = (TextView)view.findViewById(R.id.txtIngredient_3_amount);
-        txtIngredient_4_amount = (TextView)view.findViewById(R.id.txtIngredient_4_amount);
-        txtIngredient_5_amount = (TextView)view.findViewById(R.id.txtIngredient_5_amount);
 
         txtNumberofPersons = (TextView)view.findViewById(R.id.txtNumberofPerson);
-
-        imgInstructionDish_1 = (ImageView)view.findViewById(R.id.imgInstructionDish_1);
-        imgInstructionDish_2 = (ImageView)view.findViewById(R.id.imgInstructionDish_2);
-        imgInstructionDish_3 = (ImageView)view.findViewById(R.id.imgInstructionDish_3);
+        txtIngredientsTitle = (TextView)view.findViewById(R.id.txtingredientsTitle);
 
 
-        txtTotalCost.setText(Float.toString(dinnerModel.getTotalMenuPrice()));
+        llDishes = (LinearLayout)view.findViewById(R.id.lldishes);
+        llingerdientDetails = (LinearLayout)view.findViewById(R.id.llingredientdetails);
+
+        llborderColor_ingredients = (LinearLayout)view.findViewById(R.id.llborderColor_ingredients);
+
+    //    txtTotalCost.setText(Float.toString(dinnerModel.getTotalMenuPrice()));
+
+     //   loadDynamicViews();
 
 //        Dish dish = dinnerModel.getDishes().get(0);
 //        txtDishName_1.setText(dish.getName( ));
@@ -105,6 +108,119 @@ public class IngredientsView {
 
 
 
+    }
+
+    public void loadIngredients(){
+        //int i = 0;
+        //llDishes.removeAllViews();
+        llingerdientDetails.removeAllViews();
+        for(int i = 0; i < llDishes.getChildCount();i++) {
+
+                ((LinearLayout) llDishes.getChildAt(i).findViewById(R.id.llborderColor)).setBackgroundColor(Color.parseColor("#00800000"));
+
+        }
+        //llborderColor_ingredients.setBackgroundColor(Color.parseColor("#800000"));
+       for(Dish dish: dinnerModel.getDishes()){
+           /*View instructionsItemView = layoutInflater.inflate(R.layout.instruction_item_view,null);
+           instructionsItemView.setTag(i++);
+           ImageView imgInstructionDish = (ImageView)instructionsItemView.findViewById(R.id.imgInstructionDish);
+           TextView txtDishName = (TextView)instructionsItemView.findViewById(R.id.txtNameDish);
+           imgInstructionDish.setBackgroundResource(dish.getImage());
+           txtDishName.setText(dish.getName());
+           instructionsItemView.setOnClickListener(new InstructionOnClicListener());
+           llDishes.addView(instructionsItemView);*/
+
+
+           for (Ingredient ing : dish.getIngredients()) {
+
+               View ingtredientsItemView = layoutInflater.inflate(R.layout.ingredients_item_view,null);
+               TextView txtingredientName = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientName);
+               TextView txtingredientUnit = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientUnit);
+               txtingredientName.setText(ing.getName());
+               txtingredientUnit.setText(ing.getUnit());
+               llingerdientDetails.addView(ingtredientsItemView);
+           }
+       }
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        if(observable instanceof  DinnerModel){
+            DinnerModel odinnermodel = (DinnerModel)observable;
+
+            txtTotalCost.setText(Float.toString(dinnerModel.getTotalMenuPrice()));
+            txtNumberofPersons.setText(""+dinnerModel.getNumberOfGuests());
+
+            int i = 0;
+            llDishes.removeAllViews();
+            llingerdientDetails.removeAllViews();
+            //llborderColor_ingredients.setBackgroundColor(Color.parseColor("#800000"));
+            for(Dish dish: odinnermodel.getDishes()){
+                View instructionsItemView = layoutInflater.inflate(R.layout.instruction_item_view,null);
+                instructionsItemView.setTag(i++);
+                ImageView imgInstructionDish = (ImageView)instructionsItemView.findViewById(R.id.imgInstructionDish);
+                TextView txtDishName = (TextView)instructionsItemView.findViewById(R.id.txtNameDish);
+                imgInstructionDish.setBackgroundResource(dish.getImage());
+                txtDishName.setText(dish.getName());
+                instructionsItemView.setOnClickListener(new InstructionOnClicListener());
+                llDishes.addView(instructionsItemView);
+
+
+                for (Ingredient ing : dish.getIngredients()) {
+
+                    View ingtredientsItemView = layoutInflater.inflate(R.layout.ingredients_item_view,null);
+                    TextView txtingredientName = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientName);
+                    TextView txtingredientUnit = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientUnit);
+                    txtingredientName.setText(ing.getName());
+                    txtingredientUnit.setText(ing.getUnit());
+                    llingerdientDetails.addView(ingtredientsItemView);
+                }
+            }
+
+        }
+
+
+    }
+
+    public class InstructionOnClicListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            llingerdientDetails.removeAllViews();
+            txtIngredientsTitle.setVisibility(View.GONE);
+            txtNumberofPersons.setVisibility(View.GONE);
+            llborderColor_ingredients.setBackgroundColor(Color.parseColor("#00800000"));
+            View instructionDescription = layoutInflater.inflate(R.layout.instruction_description_view,null);
+            TextView txtDishName = (TextView)instructionDescription.findViewById(R.id.txtDishName);
+            TextView txtDishType = (TextView)instructionDescription.findViewById(R.id.txtDishType);
+            TextView txtCookingInstruction = (TextView)instructionDescription.findViewById(R.id.txtCookingInstruction);
+            String name = ((TextView)view.findViewById(R.id.txtNameDish)).getText().toString();
+
+            String type = "";
+            for(Dish dish: dinnerModel.getDishes()){
+                if(dish.getName().equals(name)){
+                    txtDishName.setText(name);
+                    if(dish.getType()==1){type = "Starter";}
+                    else if(dish.getType()==2){type = "Main";}
+                    else if(dish.getType()==3){type = "Dessert";}
+                    txtDishType.setText(type);
+                    txtCookingInstruction.setText(dish.getDescription());
+
+                }
+
+            }
+            llingerdientDetails.addView(instructionDescription);
+            View tempview;
+            for(int i = 0; i < llDishes.getChildCount();i++){
+                if(llDishes.getChildAt(i)==view){
+                    ((LinearLayout)view.findViewById(R.id.llborderColor)).setBackgroundColor(Color.parseColor("#800000"));
+                }
+                else {
+                    tempview = llDishes.getChildAt(i);
+                    ((LinearLayout)tempview.findViewById(R.id.llborderColor)).setBackgroundColor(Color.parseColor("#00800000"));
+                }
+            }
+        }
     }
 
 }
