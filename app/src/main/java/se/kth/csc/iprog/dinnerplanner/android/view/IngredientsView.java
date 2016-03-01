@@ -83,7 +83,7 @@ public class IngredientsView implements Observer {
                TextView txtingredientUnit = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientUnit);
                TextView txtingredientqty = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientqty);
                txtingredientName.setText(ing.getName());
-               txtingredientqty.setText(Double.toString(ing.getQuantity() * dinnerModel.getNumberOfGuests()));
+               txtingredientqty.setText(Double.toString(Double.parseDouble(ing.getQuantity()) * dinnerModel.getNumberOfGuests()));
                txtingredientUnit.setText(ing.getUnit());
                llingerdientDetails.addView(ingtredientsItemView);
            }
@@ -107,7 +107,7 @@ public class IngredientsView implements Observer {
                 instructionsItemView.setTag(i++);
                 ImageView imgInstructionDish = (ImageView)instructionsItemView.findViewById(R.id.imgInstructionDish);
                 TextView txtDishName = (TextView)instructionsItemView.findViewById(R.id.txtNameDish);
-                imgInstructionDish.setBackgroundResource(dish.getImage());
+                imgInstructionDish.setImageBitmap(dish.getImage());
                 txtDishName.setText(dish.getName());
                 instructionsItemView.setOnClickListener(new InstructionOnClickListener());
                 llDishes.addView(instructionsItemView);
@@ -120,7 +120,7 @@ public class IngredientsView implements Observer {
                     TextView txtingredientUnit = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientUnit);
                     TextView txtingredientqty = (TextView)ingtredientsItemView.findViewById(R.id.txtIngredientqty);
                     txtingredientName.setText(ing.getName());
-                    txtingredientqty.setText(Double.toString(ing.getQuantity()*odinnermodel.getNumberOfGuests()));
+                    txtingredientqty.setText(Double.toString(Double.parseDouble(ing.getQuantity()) * odinnermodel.getNumberOfGuests()));
                     txtingredientUnit.setText(ing.getUnit());
                     llingerdientDetails.addView(ingtredientsItemView);
                 }

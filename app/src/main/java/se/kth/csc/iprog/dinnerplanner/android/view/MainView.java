@@ -92,7 +92,7 @@ public class MainView implements Observer{
 
             dishView.setText(starterDish.getName());
             ImageView dishImage = (ImageView) starterView.findViewById(R.id.imgDishItem);
-            dishImage.setBackgroundResource(starterDish.getImage());
+            dishImage.setImageBitmap(starterDish.getImage());
 
             if(dinnerModel.getDishes().contains(starterDish))
                 starterView.findViewById(R.id.llMenuItem).setBackgroundResource(R.drawable.rect_border_magenta);
@@ -108,7 +108,7 @@ public class MainView implements Observer{
             TextView dishView = (TextView) mainView.findViewById(R.id.txtDishItem);
             dishView.setText(mainDish.getName());
             ImageView dishImage = (ImageView) mainView.findViewById(R.id.imgDishItem);
-            dishImage.setBackgroundResource(mainDish.getImage());
+            dishImage.setImageBitmap(mainDish.getImage());
 
             if(dinnerModel.getDishes().contains(mainDish))
 
@@ -125,7 +125,7 @@ public class MainView implements Observer{
             TextView dishView = (TextView) dessertView.findViewById(R.id.txtDishItem);
             dishView.setText(dessertDish.getName());
             ImageView dishImage = (ImageView) dessertView.findViewById(R.id.imgDishItem);
-            dishImage.setBackgroundResource(dessertDish.getImage());
+            dishImage.setImageBitmap(dessertDish.getImage());
 
             if(dinnerModel.getDishes().contains(dessertDish))
 
@@ -149,6 +149,11 @@ public class MainView implements Observer{
             if(dishNameToViewMap.containsKey(dish.getName())){
                 dishNameToViewMap.get(dish.getName()).setBackgroundResource(R.drawable.rect_border_magenta);
             }
+        } else {
+            starterLayout.removeAllViews();
+            mainLayout.removeAllViews();
+            dessertLayout.removeAllViews();
+            addViewsOfDishes();
         }
         if(observable instanceof DinnerModel){
             DinnerModel dinnerModel = (DinnerModel) observable;
@@ -188,7 +193,12 @@ public class MainView implements Observer{
             Intent itemPriceIntent = new Intent(view.getContext(), ItemPriceDialogActivity.class);
             itemPriceIntent.putExtra(Dish.EXTRA_DISH, selectedDish);
             itemPriceIntent.putExtra(Intent.EXTRA_TEXT, dinnerModel.getNumberOfGuests());
-            view.getContext().startActivity(itemPriceIntent);
+           if(!dinnerModel.getDishes().contains(selectedDish)) {
+                view.getContext().startActivity(itemPriceIntent);
+            } else {
+                v.setBackgroundColor(Color.parseColor("#ffffffff"));
+               dinnerModel.removeDishFromMenu(selectedDish);
+            }
         }
     }
 }

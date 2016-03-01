@@ -14,4 +14,10 @@
     <string name="text_totalCost">Total Cost:</string>
     <string name="text_choosemenu">Choose Menu</string>
     <string name="text_create">Create</string>
+    <string name="BigOvenAppid">18f3cT02U9f6yRl3OKDpP8NA537kxYKu</string>
+    <string name="BigOvenDishName">Title</string>
+    <string name="BigOvenDishType">Category</string>
+    <string name="BigOvenDishImage">ImageURL</string>
+    <string name="BigOvenDishId">RecipeID</string>
+
 </resources>

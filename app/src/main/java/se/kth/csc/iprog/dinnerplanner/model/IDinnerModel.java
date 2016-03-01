@@ -1,5 +1,6 @@
 package se.kth.csc.iprog.dinnerplanner.model;
 
+import java.util.List;
 import java.util.Set;
 
 public interface IDinnerModel {
@@ -37,5 +38,10 @@ public interface IDinnerModel {
      * Remove dish from menu
      */
     public void removeDishFromMenu(Dish dish);
+
+	/**
+	 * Adds new dishes from BigOven
+	 */
+	public void addNewDish(List<Dish> dishes);
 
 }

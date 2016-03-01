@@ -27,6 +27,8 @@ public class HomeActivity extends Activity implements  View.OnClickListener{
 
         dinnerModel.setNumberOfGuests(4);
         dinnerModel.getDishes().clear();
+
+        ((DinnerPlannerApplication) this.getApplication()).getBigOvenDataFetch().execute("20");
         // Creating the view class instance
         HomeView mainView = new HomeView(findViewById(R.id.view_activity_home));
 
