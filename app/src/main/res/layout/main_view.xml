@@ -15,6 +15,14 @@
             android:textStyle="bold"
             android:layout_centerInParent="true"
             android:text="Dinner Planner"/>
+        <ImageButton
+            android:id="@+id/imgbtnRefresh"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/refreshicon"/>
     </RelativeLayout>
     <LinearLayout
         android:id="@+id/lltotalCost"

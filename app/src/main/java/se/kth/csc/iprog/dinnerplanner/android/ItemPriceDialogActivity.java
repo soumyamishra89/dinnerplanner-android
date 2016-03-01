@@ -27,7 +27,7 @@ public class ItemPriceDialogActivity extends Activity{
         final Dish selectedDish = (Dish) getIntent().getExtras().get(Dish.EXTRA_DISH);
         Integer noOfGuests = getIntent().getIntExtra(Intent.EXTRA_TEXT, 0);
         // Creating the view class instance
-        ItemPriceDialogView mainView = new ItemPriceDialogView(findViewById(R.id.view_dialog_activity_item_price), selectedDish, noOfGuests);
+        ItemPriceDialogView mainView = new ItemPriceDialogView(findViewById(R.id.view_dialog_activity_item_price), selectedDish, noOfGuests, ItemPriceDialogActivity.this);
         findViewById(R.id.imgCross).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
