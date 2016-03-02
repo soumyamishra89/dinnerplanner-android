@@ -1,5 +1,6 @@
 package se.kth.csc.iprog.dinnerplanner.model;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -30,11 +31,15 @@ public class BigOvenDataFetch extends AsyncTask<String, Void, List<Dish>> {
         this.dinnerModel = dinnerModel;
     }
     private final String LOG_TAG = BigOvenDataFetch.class.getName();
-
-
+    public ProgressDialog mprogressdialog = null;
+    @Override
+    protected void onPreExecute(){
+        mprogressdialog.show();
+    }
     @Override
     protected void onPostExecute(List<Dish> dishes){
         dinnerModel.addNewDish(dishes);
+        mprogressdialog.dismiss();
     }
 
     @Override

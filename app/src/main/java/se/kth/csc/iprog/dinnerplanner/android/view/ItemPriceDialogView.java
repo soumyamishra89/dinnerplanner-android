@@ -1,5 +1,7 @@
 package se.kth.csc.iprog.dinnerplanner.android.view;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -36,10 +38,11 @@ public class ItemPriceDialogView {
     TextView txtTotalDishCost;
 
     ImageView imgDish;
-
+    Context mycontext;
     Button btnChoose;
 
-    public ItemPriceDialogView(final View view, Dish dish, Integer noOfGuests){
+    ProgressDialog progress;
+    public ItemPriceDialogView(final View view, Dish dish, Integer noOfGuests, Context mycontext){
         this.view = view;
 
         txtDishName = (TextView) view.findViewById(R.id.txtDishName);
@@ -47,6 +50,7 @@ public class ItemPriceDialogView {
         txtTotalDishCost = (TextView) view.findViewById(R.id.txttotalDishCost);
 
         imgDish = (ImageView) view.findViewById(R.id.imgDish);
+        this.mycontext = mycontext;
 
 
         if (dish.getIngredients().isEmpty()) {
@@ -153,7 +157,11 @@ public class ItemPriceDialogView {
             return uriBuilder.toString();
         }
 
-
+        @Override protected void onPreExecute(){
+            progress = new ProgressDialog(mycontext);
+            progress.setMessage("Loading...");
+            progress.show();
+        }
         @Override
         protected void onPostExecute(List<Ingredient> ingredients){
             if (!ingredients.isEmpty()) {
@@ -168,6 +176,7 @@ public class ItemPriceDialogView {
                 txtTotalDishCost.setText("Cost: " + price * noOfGuests + " Kr");
 
                 imgDish.setImageBitmap(selectedDish.getImage());
+                progress.dismiss();
             }
         }
     }
