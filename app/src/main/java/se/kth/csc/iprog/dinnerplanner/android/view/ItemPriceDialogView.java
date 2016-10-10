@@ -153,7 +153,7 @@ public class ItemPriceDialogView {
             uriBuilder.authority("api.bigoven.com");
             uriBuilder.appendPath("recipe");
             uriBuilder.appendPath(selectedDish.getRecipeId());
-            uriBuilder.appendQueryParameter("api_key", "18f3cT02U9f6yRl3OKDpP8NA537kxYKu");
+            uriBuilder.appendQueryParameter("api_key", "XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN");
             return uriBuilder.toString();
         }
 

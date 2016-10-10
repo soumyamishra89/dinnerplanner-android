@@ -1,5 +1,6 @@
 package se.kth.csc.iprog.dinnerplanner.android;
 
+import android.app.Activity;
 import android.app.Application;
 import android.app.ProgressDialog;
 
@@ -20,10 +21,11 @@ public class DinnerPlannerApplication extends Application {
 		this.dinnerModel = dinnerModel;
 	}
 
-	public BigOvenDataFetch getBigOvenDataFetch( ProgressDialog mprogressdialog ){
+	public BigOvenDataFetch getBigOvenDataFetch( ProgressDialog mprogressdialog, Activity activity){
 
 		bigOvenDataFetch = new BigOvenDataFetch(getDinnerModel());
 		this.bigOvenDataFetch.mprogressdialog = mprogressdialog;
+		this.bigOvenDataFetch.activity = activity;
 		return bigOvenDataFetch;
 	}
 

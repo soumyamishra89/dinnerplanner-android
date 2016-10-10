@@ -1,11 +1,13 @@
 package se.kth.csc.iprog.dinnerplanner.model;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +34,8 @@ public class BigOvenDataFetch extends AsyncTask<String, Void, List<Dish>> {
     }
     private final String LOG_TAG = BigOvenDataFetch.class.getName();
     public ProgressDialog mprogressdialog = null;
+    public Activity activity;
+    private String errorMsg = null;
     @Override
     protected void onPreExecute(){
         mprogressdialog.show();
@@ -40,6 +44,10 @@ public class BigOvenDataFetch extends AsyncTask<String, Void, List<Dish>> {
     protected void onPostExecute(List<Dish> dishes){
         dinnerModel.addNewDish(dishes);
         mprogressdialog.dismiss();
+        if(errorMsg!=null) {
+            Toast toast = Toast.makeText(activity, errorMsg, Toast.LENGTH_LONG);
+            toast.show();
+        }
     }
 
     @Override
@@ -51,6 +59,7 @@ public class BigOvenDataFetch extends AsyncTask<String, Void, List<Dish>> {
         BufferedReader reader = null;
         String bigOvenData = null;
         try {
+            Log.v(LOG_TAG, bigOvenUrl);
             URL url = new URL(bigOvenUrl);
 
             httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -73,10 +82,13 @@ public class BigOvenDataFetch extends AsyncTask<String, Void, List<Dish>> {
             return extractDishes(bigOvenData);
 
         } catch (MalformedURLException e) {
+            errorMsg = e.getMessage();
             e.printStackTrace();
         } catch (IOException e) {
+            errorMsg = e.getMessage();
             e.printStackTrace();
         } catch (JSONException e) {
+            errorMsg = e.getMessage();
             e.printStackTrace();
         } finally {
             if(httpURLConnection != null){
@@ -181,7 +193,7 @@ public class BigOvenDataFetch extends AsyncTask<String, Void, List<Dish>> {
         uriBuilder.scheme("http");
         uriBuilder.authority("api.bigoven.com");
         uriBuilder.appendPath("recipes");
-        uriBuilder.appendQueryParameter("api_key", "18f3cT02U9f6yRl3OKDpP8NA537kxYKu");
+        uriBuilder.appendQueryParameter("api_key", "XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN");
         uriBuilder.appendQueryParameter("pg", "1");
         uriBuilder.appendQueryParameter("rpp", params[0]);
        //uriBuilder.appendQueryParameter("Accept", "application/json");

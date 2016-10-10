@@ -29,7 +29,7 @@ public class MainActivity extends Activity  {
         ProgressDialog progress = new ProgressDialog(this);
         progress.setMessage("Loading...");
 
-        ((DinnerPlannerApplication) this.getApplication()).getBigOvenDataFetch(progress).execute(""+numOfItemstoLoad);//sakel
+        ((DinnerPlannerApplication) this.getApplication()).getBigOvenDataFetch(progress, this).execute(""+numOfItemstoLoad);//sakel
         // Creating the view class instance
         MainView mainView = new MainView(findViewById(R.id.view_activity_main), dinnerModel);
 
@@ -55,7 +55,7 @@ public class MainActivity extends Activity  {
                 numOfItemstoLoad += 20;
                 ProgressDialog progress = new ProgressDialog(MainActivity.this);
                 progress.setMessage("Loading...");
-                ((DinnerPlannerApplication) MainActivity.this.getApplication()).getBigOvenDataFetch(progress).execute(""+numOfItemstoLoad);//sakel
+                ((DinnerPlannerApplication) MainActivity.this.getApplication()).getBigOvenDataFetch(progress, MainActivity.this).execute(""+numOfItemstoLoad);//sakel
             }
         });
     }
